@@ -1,0 +1,49 @@
+## mako
+<%! 
+  from django.core.urlresolvers import reverse 
+  from edxmako.shortcuts import marketing_link
+%>
+<div class="wrapper-footer">
+  <footer>
+    <div class="colophon">
+      <nav class="nav-colophon">
+        <ol>
+          <li><a href="${reverse('tos')}">Terms of Service</a></li>
+          <li><a href="${reverse('tos')}#privacy">Privacy Policy</a></li>
+          <li><a href="${reverse('tos')}#honor">Honor Code</a></li>
+          <li><a href="${reverse('tos')}#copyright">Copyright</a></li>
+          <li><a href="${reverse('about_edx')}#careers">Careers</a></li>
+          <li><a href="${reverse('about_edx')}#contact">Contact</a></li>
+          <li><a href="${marketing_link('FAQ')}">Help</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="references">
+      <span>Built on <a href="http://code.edx.org">OpenEdX</a>.</span>
+    </div>
+  </footer>
+</div>
+
+<div id="su-footer">
+  <div class="su-container">
+    <div class="su-row">
+      <div id="su-footer-logo" class="span2">
+        <a href="http://www.hse.ru">
+          <img src="${static.url('themes/hse/images/hse-footer-logo.png')}" alt="National Research University Higher School of Economics (HSE), Russia." width="187" height="96"/>
+        </a>
+      </div>
+      <div id="su-footer-text" class="span10">
+        <ul>
+          <li class="home"><a href="http://www.hse.ru">HSE Home</a></li>
+          <li class="maps alt"><a href="http://www.hse.ru/contacts.html">Maps &amp; Directions</a></li>
+          <li class="search-hse"><a href="http://www.hse.ru/search/search.html?simple=0">Search HSE</a></li>
+          <li class="terms alt"><a href="http://www.hse.ru/info/">HSE Info</a></li>
+          <li class="copyright"><a href="http://www.hse.ru/info/intellectual">Copyright Complaints</a></li>
+        </ul>
+        <div class="clear"></div>
+        <p class="copyright vcard">&copy; <span class="fn org">National Research University Higher School of Economics</span>, <span class="adr"> <span class="locality">HSE</span>, <span class="region">Russian Federation</span> <span class="postal-code">Moscow</span> </span></p>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+  </div>
+</div>

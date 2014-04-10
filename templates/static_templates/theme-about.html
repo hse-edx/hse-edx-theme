@@ -1,0 +1,163 @@
+<%! from django.core.urlresolvers import reverse %>
+<%namespace name='static' file='/static_content.html'/>
+
+<%inherit file="/main.html" />
+
+<%block name="title"><title>About HSE Online</title></%block>
+
+<%block name="js_extra">
+  <script type="text/javascript">
+    $(function() {
+      $('section.message').hide();
+      $('#about-menu a').removeClass('active');
+      window.scrollTo(0,0);
+      
+      if ( document.location.href.indexOf('#faq') > -1 ) {
+        $('section#faq').show();
+        $('#about-menu a.faq').addClass('active');
+      } else if ( document.location.href.indexOf('#contact') > -1 ) {
+        $('section#contact').show();
+        $('#about-menu a.contact').addClass('active');
+      } else if ( document.location.href.indexOf('#careers') > -1 ) {
+        $('section#careers').show();
+        $('#about-menu a.careers').addClass('active');
+      } else {
+        $('section#about').show();
+        $('#about-menu a.about').addClass('active');
+      }
+      
+      $('#about-menu a').click(function(event) {
+        event.preventDefault();
+        $('#about-menu a').removeClass('active');
+        $(this).addClass('active');
+        var clickId = "section" + $(this).attr('href');
+        $('section.message').hide();
+        $(clickId).show();
+      });
+    });
+  </script>
+</%block>
+
+<section class="container about" style="width: auto;">
+  <nav id="about-menu">
+    <a href="#about" class="about active">About</a>
+    <a href="#faq" class="faq">Faq</a>
+    <a href="#careers" class="careers">Careers</a>
+    <a href="#contact" class="contact">Contact</a>
+  </nav>
+
+  <section class="vision">
+
+## About Section ##
+    <section class="message left" id="about">
+      <div class="photo">
+        <img src="${static.url('themes/hse/images/hse-crow.jpg')}" alt="Crow is HSE's lucky charm" />
+          <!-- Image from hse.ru -->
+      </div>
+      <article>
+        <h2>About <span class="edx">HSE Online</span></h2>
+        
+        <p>HSE is developing new online course material in order to improve existing courses and provide broader public access to exciting learning opportunities.</p>
+        <p>The engineering team at HSE is running and developing on an instance of the <a href="http://code.edx.org">OpenEdX platform</a>.</p>
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+
+
+## FAQ Section ##
+    <section class="message left" id="faq">
+      <div class="photo">
+        <img src="${static.url('themes/hse/images/hse-graduate.jpg')}" alt="HSE graduate" />
+          <!-- Image from hse.ru -->
+      </div>
+      <article>
+        <h2>FAQs</h2>
+        <p><strong>Has HSE joined the edX consortium?</strong><br />
+        No.</p>
+        
+        <p><strong>What browsers are recommended for use with HSE OpenEdX?</strong><br />
+        The latest versions of <a href="http://chrome.google.com/">Google Chrome</a>, <a href="http://www.mozilla.org/firefox">Mozilla Firefox</a>, and <a href="http://www.apple.com/safari/">Apple Safari</a>. (The site is currently not optimized for mobile use.)</p>
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+
+
+## Careers Section ##
+    <section class="message left" id="careers">
+      <div class="photo">
+        <img src="${static.url('themes/hse/images/hse-guest.jpg')}" alt="HSE's guest" />
+          <!-- Image from hse.ru -->
+      </div>
+      <article>
+        <h2>Careers</h2>
+        <p>
+          Technology is disrupting higher education.  We believe universities can benefit from this if it's done right.  Supporting basic education and computer science research is core to what we do.  We also believe
+          that universities should be in control of how this space evolves, and that an open-source platform is the best way to do that.
+        </p>
+        
+        <p>&nbsp;</p>
+
+
+        <h3><strong>Software Engineer</strong>, Online Learning (edX)<br /><br /></h3>
+        <p>
+          We are hiring an engineer to join HSE Online's Platform team.
+        </p>
+        <p>
+          Our technical stack is modern and sane:<br />
+          - Python/Django, Nginx, Celery<br />
+          - CSS/SASS, JS/jQuery/CoffeeScript<br />
+          - Relational (MySQL) and nosql (MongoDB) storage<br />
+          - Jenkins, Gerrit, and Ansible
+        </p>
+        <p>
+          As an engineer on this team you'd be expected to work across the stack as needed.  We are looking for generalists.  If you are an engineer who sees technical variety and learning as fun challenges, then join us.
+        </p>
+        <p>
+          <a href="http://www.hse.ru/work/" style="font-size: 1.25em;padding: 5px;background-color: #005dab;color: white;border-radius: 5px;">
+            Search for other vacancies
+          </a>
+        </p>
+        
+      </article>
+      <hr class="fade-right-hr-divider">
+    </section>
+
+
+## Contact Section ##
+    <section class="message left" id="contact">
+      <div class="photo">
+        <img src="${static.url('themes/hse/images/hse-day.jpg')}" alt="the University day" />
+          <!-- Image from Internet -->
+      </div>
+      <article id="hse-OpenEdX-contact">
+        <h2>Contact Information (themplate)</h2>
+        <p><strong>For general information email us at:</strong><br />
+        <a href="mailto:edx@hse.ru">edx@hse.ru</a></p>
+
+        <p><strong>For bug reports email us at:</strong><br />
+        <a href="mailto:edx@hse.ru">edx@hse.ru</a></p>
+
+        <p><strong>For suggestions email us at:</strong><br />
+        <a href="mailto:edx@hse.ru">edx@hse.ru</a></p>
+
+        <p><strong>For technical support reports email us at:</strong><br />
+        <a href="mailto:edx@hse.ru">edx@hse.ru</a></p>
+
+      </article>
+      <script>
+        $(function() {
+          var ua = navigator.userAgent;
+          
+          $('#hse-OpenEdX-contact a').each(function() {
+            var href = $(this).attr('href') + "?body=User Agent String: " + ua + " (Please do not delete, this text helps us help you. - HSE OpenEdX Team)";
+            if (!$(this).hasClass('external')) {
+              $(this).attr('href', href);
+            }
+          });
+        });
+      </script>
+      <hr class="fade-right-hr-divider">
+    </section>
+  </section>
+
+</section>
