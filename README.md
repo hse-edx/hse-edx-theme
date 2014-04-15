@@ -1,7 +1,7 @@
 Overview
 ========
 This directory stores HSE's theming files for its edX instance.
-
+Stanford's theme is the starting point of the development (https://github.com/Stanford-Online/edx-theme)
 
 License
 =======
